@@ -61,7 +61,7 @@ This isn't just about video games. This technology has real-world applications:
 
 The environment is live and you can watch the agent drive in real-time.
 
-*   **Live Demo:** [https://debug180906-solar-ev-env.hf.space](https://debug180906-solar-ev-env.hf.space)
+*   **Live Demo:** [https://solar-ev-env.vercel.app/](https://solar-ev-env.vercel.app/)
 *   **Training Notebook:** [View on Kaggle](https://www.kaggle.com/code/chiragmit/final-sub-notebook)
 *   **Source Code:** [GitHub Repository](https://github.com/debug-create/solar-ev-env)
 
