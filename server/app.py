@@ -66,6 +66,15 @@ except Exception:
         version="2.0.0",
     )
 
+    from fastapi.middleware.cors import CORSMiddleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     # Shared instance for fallback mode only
     _fallback_env = SolarEVEnvironment()
 
@@ -112,6 +121,16 @@ if os.getenv("ENABLE_DEMO_INTERFACE", "true").lower() in {"1", "true", "yes"}:
         app.mount("/demo", StaticFiles(directory="frontend", html=True), name="frontend")
     except Exception as exc:
         print(f"[WARN] Arcade frontend not mounted: {exc}")
+
+# Enable CORS for Vercel and other external frontends
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/api/reset")

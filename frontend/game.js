@@ -3,7 +3,11 @@
  * Solar EV Sensor Window & Tactical Overview
  */
 
-const BASE_URL = window.location.origin;
+// Detect Backend URL: If hosted on Vercel/External, point to the Hugging Face Space.
+const PROD_BACKEND = "https://debug180906-solar-ev-env.hf.space";
+const BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.origin === PROD_BACKEND) 
+    ? window.location.origin 
+    : PROD_BACKEND;
 
 // State
 let tasks = {};
