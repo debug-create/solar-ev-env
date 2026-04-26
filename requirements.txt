@@ -1,0 +1,16 @@
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+openenv-core==0.2.1
+openai>=2.7.2,<3.0.0
+requests==2.32.3
+httpx==0.28.1
+websockets>=15.0.1
+python-multipart==0.0.20
+gradio>=5.47.0
+plotly==5.24.1
+pandas==2.2.3
+numpy==1.26.4
+matplotlib==3.9.4
+moviepy==2.1.2
+kaleido==0.2.1

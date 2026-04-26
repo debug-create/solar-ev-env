@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar EV Sensor Window</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Sensor Views -->
+        <div id="view-container">
+            <!-- Top: Sensor Window -->
+            <div id="sensor-window">
+                <canvas id="sensorCanvas"></canvas>
+                <div class="hud-overlay top-left">SENSOR WINDOW | <span id="hud-task">--</span></div>
+                <div class="hud-overlay top-right"><span id="hud-step">Step: 0</span> | <span id="hud-dist">0/0m</span></div>
+                
+                <div class="telemetry-panel">
+                    <div class="telemetry-row"><span>VELOCITY</span><span id="tel-speed" class="val">0.0 kph</span></div>
+                    <div class="telemetry-row"><span>ENERGY (SoC)</span><span id="tel-soc" class="val">100.0%</span></div>
+                    <div class="telemetry-row"><span>THERMAL CORE</span><span id="tel-temp" class="val">25.0 °C</span></div>
+                    <div class="telemetry-row"><span>SOLAR INPUT</span><span id="tel-solar" class="val">0 W</span></div>
+                </div>
+            </div>
+            
+            <!-- Bottom: Global Circuit -->
+            <div id="global-circuit">
+                <canvas id="circuitCanvas"></canvas>
+                <div class="hud-overlay top-left">GLOBAL CIRCUIT OVERVIEW</div>
+                <div id="agent-thought" class="hud-overlay bottom-center">SYSTEM IDLE</div>
+                <!-- Success/Fail Banner inside the view -->
+                <div id="banner" class="hidden">
+                    <h1 id="banner-title">MISSION COMPLETE</h1>
+                    <p id="banner-sub"></p>
+                    <div id="banner-score"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Command & Strategy -->
+        <div id="command-center">
+            <div class="cmd-panel">
+                <div class="panel-title">MISSION CONTROL</div>
+                <div class="control-row">
+                    <select id="task-select"><option value="">Booting systems...</option></select>
+                </div>
+                <div class="control-row inline-controls">
+                    <label><input type="checkbox" id="check-randomize" checked> RND_ENV</label>
+                    <input type="number" id="input-seed" placeholder="SEED (opt)">
+                </div>
+                <div class="btn-group">
+                    <button class="btn" id="btn-reset">INITIATE</button>
+                    <button class="btn" id="btn-step">STEP_FWD</button>
+                    <button class="btn btn-auto" id="btn-auto">ENGAGE AUTOPILOT</button>
+                </div>
+                <div id="app-status">SYSTEM READY</div>
+            </div>
+
+            <div class="cmd-panel">
+                <div class="panel-title">TACTICAL ADVISOR LINK</div>
+                <div id="advisor-forecast">No telemetry link established.</div>
+                <div class="risk-indicators">
+                    <div class="risk-chip" id="chip-solar">SOLAR: --</div>
+                    <div class="risk-chip" id="chip-temp">THERM: --</div>
+                </div>
+            </div>
+
+            <div class="cmd-panel">
+                <div class="panel-title">AHEAD (LOOKAHEAD MESH)</div>
+                <div id="lookahead-content"></div>
+            </div>
+
+            <div class="cmd-panel" style="flex:1;">
+                <div class="panel-title">MISSION REPORT</div>
+                <div id="mission-log">Awaiting episode completion...</div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
